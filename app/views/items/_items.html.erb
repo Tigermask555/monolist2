@@ -4,14 +4,16 @@
       <div class="item-box">
         <div class="image">
           <div class="img-wrap">
-            <%= link_to image_tag(" "), :action => " " %>
-            <%= image_tag("no-image.png" , alt: item['itemName']) %>
+            <% if item.large_image.present? %>
+              <%= image_tag(item.large_image , alt: item.title) %>
+            <% else %>
+              <%= image_tag("no-image.png" , alt: item['itemName']) %>
+            <% end %>
           </div>
         </div>
         <div class="detail">
           <p class="title">
-            <% link_to 'Search', 'http://item.rakuten.co.jp/' %>
-            仮タイトル
+            <%= item.title %>
           </p>
         </div>
         <div class="action clearfix">
