@@ -4,8 +4,8 @@
       <div class="item-box">
         <div class="image">
           <div class="img-wrap">
-            <%= if item['mediumImageUrls'] %>
-              <%= image_tag(item['mediumImageUrls'] , alt: item['itemName']) %>
+            <% if item['itemName'] %>
+              <%= image_tag(item['mediumImageUrls'].first['imageUrl'].gsub('?_ex=128x128', '') , alt: item['itemName']) %>
             <% else %>
               <%= image_tag("no-image.png" , alt: item['itemName']) %>
             <% end %>
@@ -13,7 +13,7 @@
         </div>
         <div class="detail">
           <p class="title">
-            <%= item.title %>
+            <%= link_to item['itemName'], item['itemUrl'] %>
           </p>
         </div>
         <div class="action clearfix">
